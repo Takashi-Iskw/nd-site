@@ -32,7 +32,6 @@
 // }
 
 
-import SplitText from '@/components/SplitText/SplitText'
 import NDFadein from '@/components/SplitText/NDFadein'
 import SlideInBar from '@/components/SlideInBar/SlideInBar'
 

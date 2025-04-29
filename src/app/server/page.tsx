@@ -1,5 +1,4 @@
-import SplitText from '@/components/SplitText/SplitText'
-import NDFadein from '@/components/SplitText/NDFadein'
+import ServerStatus from "@/components/ServerStatus/ServerStatus"
 
 
 export default function Server() {
@@ -16,11 +15,7 @@ export default function Server() {
     >
       <main className="flex flex-col gap-8 items-center sm:items-start">
         {/* ここでテキストを中央に寄せたいなら、クラスで調整 */}
-        <SplitText
-          text="Server"
-          className="text-8xl font-bold"
-        />
-        <NDFadein />
+        <ServerStatus bgSrc="/earth.png" status="online" address="ndqasmc101.com"/>
       </main>
 
       {/* フッターや他コンテンツ */}

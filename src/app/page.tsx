@@ -33,7 +33,9 @@
 
 
 import NDFadein from '@/components/SplitText/NDFadein'
-import SlideInBar from '@/components/SlideInBar/SlideInBar'
+// import SlideInBar from '@/components/SlideInBar/SlideInBar'
+import ShowMain from '@/components/ShowMain/ShowMain'
+import ShowMainInverse from '@/components/ShowMain/ShowMainInverse'
 
 export default function Page() {
   return (
@@ -59,7 +61,21 @@ export default function Page() {
 
         {/* 画像フェード演出 */}
         <NDFadein />
-        <SlideInBar title='More creative' description={'クリエイティブさが私達の力学です。\n 私達が生み出すものによって、\n多くの人々に創造の喜びを提供します。'} />
+        <ShowMain 
+          backdropLabel='More creative'
+          title='More creative'
+          description='クリエイティブさこそが私達の力学です。私達が生み出すものによって、多くの人々に創造の喜びを提供します。'
+          mediaSrc='/videos/demo.mp4'
+          isVideo 
+        />
+        <ShowMainInverse 
+          backdropLabel='Chaotic'
+          title='Chaotic'
+          description='カオスなものを積極的に作り出し、それを世界の隅々にまで届けたいと考えています。'
+          mediaSrc='/videos/demo2.mp4'
+          isVideo 
+        />
+        {/* <SlideInBar title='More creative' description={'クリエイティブさが私達の力学です。\n 私達が生み出すものによって、\n多くの人々に創造の喜びを提供します。'} /> */}
       </main>
 
       {/* --------- FOOTER --------- */}

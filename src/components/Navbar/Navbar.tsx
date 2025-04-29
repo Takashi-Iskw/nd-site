@@ -44,12 +44,13 @@ export default function Navbar({ username }: NavbarProps) {
       {/* ─ Menu ─ */}
       <nav className="relative">
         <ul className="flex gap-8 text-white uppercase tracking-wide">
-          <NavItem
+          {/* <NavItem
             label="Mods"
-            href="#"
+            href="/mods"
             onHover={setLaser}
             onClick={() => setModsOpen((v) => !v)}
-          />
+          /> */}
+          <NavItem label="Mods" href="/mods" onHover={setLaser} />
           <NavItem label="Server" href="/server" onHover={setLaser} />
           <NavItem label="Media" href="/media" onHover={setLaser} />
           <NavItem label="Blog" href="/blog" onHover={setLaser} />
@@ -127,13 +128,6 @@ function NavItem({ label, href, onHover, onClick }: NavItemProps) {
           {label}
           {/* ★ レーザー枠 */}
           <span
-            // className={
-            // `pointer-events-none absolute inset-0 rounded-md ring-4 ring-[#00FF7F] ` +
-            //   `transition-[clip-path] duration-500 ` +
-            //   (hovered
-            //     ? 'clip-path-inset-0'
-            //     : 'clip-path-inset-[calc(100%_-_2px)_0_0_0]')
-            // }
             className={
                 `transition-[clip-path] duration-500 ` +
                 (hovered

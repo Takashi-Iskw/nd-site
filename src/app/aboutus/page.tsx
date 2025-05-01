@@ -12,7 +12,7 @@ export default function Mods() {
   const members = [
     { avatar: '/avatars/fossa.png',   name: 'Fossamagna2355', role: 'インフラ管理' },
     { avatar: '/avatars/jabsco.png',  name: 'Jabsco_makinov', role: 'モデリング・ワールドデザイン' },
-    { avatar: '/avatars/nama.png',    name: 'namahage54',     role: '設計・コーディング' },
+    { avatar: '/avatars/nama.png',    name: 'namahage54',     role: 'コーディング・Webサイト作成' },
   ]
   return (
     <div

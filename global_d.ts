@@ -3,3 +3,4 @@ declare module 'react-intersection-observer';
 declare module 'framer-motion';
 declare module 'lucide-react';
 declare module 'recharts';
+declare module 'next-auth/react';

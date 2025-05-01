@@ -52,7 +52,7 @@ export default function Navbar({ username }: NavbarProps) {
           /> */}
           <NavItem label="Mods" href="/mods" onHover={setLaser} />
           <NavItem label="Server" href="/server" onHover={setLaser} />
-          <NavItem label="Media" href="/media" onHover={setLaser} />
+          <NavItem label="About us" href="/aboutus" onHover={setLaser} />
           <NavItem label="Blog" href="/blog" onHover={setLaser} />
           {username ? (
             <NavItem label={username} href="/dashboard" onHover={setLaser} />

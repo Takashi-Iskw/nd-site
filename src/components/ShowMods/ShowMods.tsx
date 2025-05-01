@@ -116,7 +116,7 @@ export default function ModsShowcase() {
   const [current, setCurrent] = useState<Mod>(mods[0]);
 
   return (
-    <section className="w-full bg-neutral-700 flex flex-col items-center py-24 gap-8">
+    <section className="w-full bg-[#0e151e] flex flex-col items-center py-24 gap-8">
       {/* --- 画像 (正方形 20rem) --- */}
       <div className="w-[64rem] h-80 overflow-hidden flex items-center justify-center rounded-xl shadow-lg">
         <img

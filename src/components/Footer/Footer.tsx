@@ -83,7 +83,7 @@ export default function Footer() {
             <Link href="/"         className="hover:text-[#00FF7F] transition">HOME</Link>
             <Link href="/mods"     className="hover:text-[#00FF7F] transition">MODS</Link>
             <Link href="/server"   className="hover:text-[#00FF7F] transition">SERVER</Link>
-            <Link href="/media"    className="hover:text-[#00FF7F] transition">MEDIA</Link>
+            <Link href="/aboutus"    className="hover:text-[#00FF7F] transition">ABOUT US</Link>
             <Link href="/dashboard"className="hover:text-[#00FF7F] transition">DASHBOARD</Link>
           </nav>
         </div>

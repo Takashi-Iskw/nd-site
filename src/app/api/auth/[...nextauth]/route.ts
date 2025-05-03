@@ -1,5 +1,9 @@
+// src/app/api/auth/[...nextauth]/route.ts
+
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CognitoProvider from 'next-auth/providers/cognito';
+import GoogleProvider from 'next-auth/providers/google';
+
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -7,32 +11,49 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.COGNITO_CLIENT_ID!,
       clientSecret: process.env.COGNITO_CLIENT_SECRET!,
       issuer: process.env.COGNITO_ISSUER!,        // 例: https://myapp.auth.ap-northeast-1.amazoncognito.com
-      authorization: {                            // 直接 Microsoft 画面に飛ばすなら
-        params: { identity_provider: 'Microsoft' }   // 👈 StackOverflow でも話題 :contentReference[oaicite:0]{index=0}
-      }
-    })
+    //   authorization: {                            // 直接 Microsoft 画面に飛ばすなら
+    //     params: { identity_provider: 'Microsoft' }   // 👈 StackOverflow でも話題 :contentReference[oaicite:0]{index=0}
+    //   }
+    }),
+    GoogleProvider({
+        clientId: process.env.GOOGLE_ID!,
+        clientSecret: process.env.GOOGLE_SECRET!,
+    }),
   ],
-
   pages: {
-    signIn: '/login',        // さっきのページ
-    newUser: '/link-minecraft' // 初回だけここに飛ばし Minecraft 名入力
+    signIn: '/login',      // カスタムサインインページ
+    error:  '/login',      // エラーも同じページに戻す
+    newUser: '/link-minecraft',
   },
-
   callbacks: {
-    async jwt({ token, user }) {
-      // 初回サインイン時に DB から Minecraft 名を取得して token に乗せる
-      if (user) {
-        const mc = await fetchMinecraftUsername(user.email);
-        token.minecraftUsername = mc ?? null;
-      }
-      return token;
-    },
-    async session({ session, token }) {
-      // フロント側でも使えるように
-      session.user.minecraftUsername = token.minecraftUsername as string | null;
-      return session;
+    // 認証成功後はトップに飛ばしたいなら
+    async redirect({ baseUrl }) {
+      return baseUrl;
     }
   }
+
+//   pages: {
+//     signIn: '/login',        // さっきのページ
+//     newUser: '/link-minecraft' // 初回だけここに飛ばし Minecraft 名入力
+//   },
+
+//   callbacks: {
+//     async jwt({ token, user }) {
+//       // 初回サインイン時に DB から Minecraft 名を取得して token に乗せる
+//       if (user) {
+//         const mc = await fetchMinecraftUsername(user.email);
+//         token.minecraftUsername = mc ?? null;
+//       }
+//       return token;
+//     },
+//     async session({ session, token }) {
+//       // フロント側でも使えるように
+//       session.user.minecraftUsername = token.minecraftUsername as string | null;
+//       return session;
+//     }
+//   }
 };
 
-export const { GET, POST } = NextAuth(authOptions);
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST };
+// export const { GET, POST } = NextAuth(authOptions);

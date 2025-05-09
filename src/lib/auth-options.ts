@@ -4,6 +4,7 @@ import CognitoProvider from "next-auth/providers/cognito";
 import GoogleProvider  from "next-auth/providers/google";
 
 console.log("### RUNTIME SECRET:", process.env.NEXTAUTH_SECRET?.slice(0,8));
+console.log("### REGION:", process.env.REGION);
 
 export const authOptions: NextAuthOptions = {
     

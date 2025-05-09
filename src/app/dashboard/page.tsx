@@ -2,9 +2,20 @@ import ServerStatusCard from '@/components/dashboard/LoginStatusCard'
 import KillDeathChart   from '@/components/dashboard/KillDeathChart'
 import JobUsageRadar    from '@/components/dashboard/JobUsageRadar'
 import LogoutButton     from '@/components/dashboard/LogoutButton'
+import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth-options";
+import { fetchLinkStatus } from "@/lib/data";  // Dynamo GSI lookup
 
 
-export default function Dashboard() {
+export default async function Dashboard() {
+  const session = await getServerSession(authOptions);
+  if (!session) redirect("/api/auth/signin");
+
+  const userId = session.user!.id;   // ← 末尾に  !  を付けるか
+  const linked = await fetchLinkStatus(userId);
+  if (!linked) redirect("/link");
+
   const killDeathData = [
     { date: '4/26', kill: 23, death:  5 },
     { date: '4/27', kill: 12, death:  7 },

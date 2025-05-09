@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.804.0",
+    "@aws-sdk/lib-dynamodb": "^3.804.0",
     "@react-spring/web": "^9.7.5",
     "framer-motion": "^12.9.2",
     "lucide-react": "^0.503.0",

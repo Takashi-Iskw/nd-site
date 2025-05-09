@@ -3,7 +3,10 @@ import type { NextAuthOptions } from "next-auth";
 import CognitoProvider from "next-auth/providers/cognito";
 import GoogleProvider  from "next-auth/providers/google";
 
+console.log("### RUNTIME SECRET:", process.env.NEXTAUTH_SECRET?.slice(0,8));
+
 export const authOptions: NextAuthOptions = {
+    
     secret: process.env.NEXTAUTH_SECRET,
     providers: [
       CognitoProvider({

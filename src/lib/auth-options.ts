@@ -14,6 +14,8 @@ export const authOptions: NextAuthOptions = {
         clientId: process.env.COGNITO_CLIENT_ID!,
         clientSecret: process.env.COGNITO_CLIENT_SECRET!,
         issuer: process.env.COGNITO_ISSUER!,        // 例: https://myapp.auth.ap-northeast-1.amazoncognito.com
+        authorization: { params: { scope: "openid email profile" } },
+        checks: ["pkce"], 
       //   authorization: {                            // 直接 Microsoft 画面に飛ばすなら
       //     params: { identity_provider: 'Microsoft' }   // 👈 StackOverflow でも話題 :contentReference[oaicite:0]{index=0}
       //   }

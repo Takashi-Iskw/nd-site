@@ -28,11 +28,41 @@ export const authOptions: NextAuthOptions = {
       error:  '/login',      // エラーも同じページに戻す
       newUser: '/link-minecraft',
     },
+
+    session: {
+      strategy: "jwt",
+    },
+
     callbacks: {
-      // 認証成功後はトップに飛ばしたいなら
+      // トークン発行時に user.id を token に載せる
+      async jwt({ token, user, account }) {
+        if (account && user) {
+          // 初回サインイン時に user オブジェクトが来る
+          token.id = user.id;
+        }
+        return token;
+      },
+      // クライアント／サーバー側で getSession()/getServerSession() が呼ばれる度、
+      // token.id を session.user.id にセットする
+      async session({ session, token }) {
+        session.user = {
+          ...session.user,
+          id: token.id as string,
+        };
+        return session;
+      },
+      // 既存のリダイレクト設定があれば残しておく
       async redirect({ baseUrl }) {
         return baseUrl;
-      }
-    }
+      },
+    },
+
+
+    // callbacks: {
+    //   // 認証成功後はトップに飛ばしたいなら
+    //   async redirect({ baseUrl }) {
+    //     return baseUrl;
+    //   }
+    // }
   
-  };
+};

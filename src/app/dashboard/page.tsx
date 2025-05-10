@@ -10,6 +10,7 @@ import { fetchLinkStatus } from "@/lib/data";  // Dynamo GSI lookup
 
 export default async function Dashboard() {
   const session = await getServerSession(authOptions);
+  console.log("SESSION:", session);
   if (!session) redirect("/api/auth/signin");
 
   const userId = session.user!.id;   // ← 末尾に  !  を付けるか

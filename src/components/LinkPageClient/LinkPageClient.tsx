@@ -16,6 +16,7 @@ export default function LinkPageClient() {
   const requestCode = async () => {
     const res = await fetch('/api/link/request', {
       method: 'POST',
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ mcId }),
     });
     if (res.ok) {

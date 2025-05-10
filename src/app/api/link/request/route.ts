@@ -7,6 +7,7 @@ import { putItem } from "@/lib/dynamo"; // ラッパー作っとけ
 export async function POST(req: NextRequest) {
   // const session = await getServerSession();
   const session = await getServerSession(authOptions); 
+  console.log("SESSION in api/link/request:", session)
   if (!session) return NextResponse.json({ error: "unauth" }, { status: 401 });
 
   const { mcId } = await req.json();           // フォームで入力された MC ユーザー名

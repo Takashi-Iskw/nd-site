@@ -5,7 +5,7 @@ import LogoutButton     from '@/components/dashboard/LogoutButton'
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth-options";
-import { fetchLinkStatus } from "@/lib/data";  // Dynamo GSI lookup
+// import { fetchLinkStatus } from "@/lib/data";  // Dynamo GSI lookup
 
 
 export default async function Dashboard() {
@@ -13,9 +13,9 @@ export default async function Dashboard() {
   console.log("SESSION:", session);
   if (!session) redirect("/api/auth/signin");
 
-  const userId = session.user!.id;   // ← 末尾に  !  を付けるか
-  const linked = await fetchLinkStatus(userId);
-  if (!linked) redirect("/link");
+  // const userId = session.user!.id;   // ← 末尾に  !  を付けるか
+  // const linked = await fetchLinkStatus(userId);
+  // if (!linked) redirect("/link");
 
   const killDeathData = [
     { date: '4/26', kill: 23, death:  5 },
